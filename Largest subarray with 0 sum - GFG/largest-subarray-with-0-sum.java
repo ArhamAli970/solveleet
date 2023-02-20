@@ -31,22 +31,28 @@ class GfG
 {
     int maxLen(int arr[], int n)
     {
-    int max=0;
+    int max=0; 
+    //here i had taken sum of elements till last
 HashMap <Integer,Integer> p= new HashMap<>();
 for(int i=1;i<arr.length;i++){ 
     arr[i]=arr[i]+arr[i-1];
 }
 
-for (int i=0;i<arr.length;i++){ 
-    if(p.containsKey(arr[i])){  
+/* yaha maine dekha ki agar wo element milta hai to  jo maine hashmap mai 
+index store karaya hai us same element k wha s current index ko minus krdu
+or max chexk krlu 
+or agr wo zero hai to current index +1 krlu
+*/
+for (int curridx=0;curridx<arr.length;curridx++){ 
+    if(p.containsKey(arr[curridx])){  
       
-        max= Math.max(max, i-p.get(arr[i]));
+        max= Math.max(max, curridx-p.get(arr[curridx]));
     }
-     else if(arr[i]==0){ 
-        max= Math.max(max, i+1);
+     else if(arr[curridx]==0){ 
+        max= Math.max(max, curridx+1);
     }
     else{ 
-p.put(arr[i],i);
+p.put(arr[curridx],curridx);
     }
 }
 return max;
