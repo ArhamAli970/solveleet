@@ -33,23 +33,11 @@ public class Main {
 
 class Solution {
     int getSingle(int arr[], int n) {
-       
-       Arrays.sort(arr); 
-       int count =1;
-       for (int i=1;i<arr.length;i++){ 
-        
-        if(arr[i]==arr[i-1]){ 
-         count++;   
-        }
-        else{
-         if(count%2!=0){return arr[i-1];}
-            count =1;
-        }
-           
-       }
-    
-    if(count%2!=0){return arr[arr.length-1];}
-return 0;    
+   int a=0;    
+for (int i=0;i<arr.length;i++){ 
+    a^=arr[i];
+}
+return a;
         
     }
 }
