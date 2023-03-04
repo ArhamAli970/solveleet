@@ -56,24 +56,18 @@ class Solution
         if(arr.length==1 ||arr[0]>=arr[1]){return 0;}
          else if(arr[n-1]>=arr[n-2]){return n-1;}
          
-     int start=0; int end=n-1;
+     int start=0;int end=n-1; 
+     int val=0;
      while(start<end){ 
-        int mid=(start+end)/2;
-        if (arr[mid]>=Math.max(arr[mid-1],arr[mid+1])){return mid;}
+        int mid=(start+end)/2; 
+        if(arr[mid]<arr[mid-1]){end=mid;}
+       else if (arr[mid]>=Math.max(arr[mid-1],arr[mid+1])){val=mid;
+            break;
+        }
        else{ start=mid+1;}
          
      }
-    int val=0; 
-     start=0;  end=n-1;
-     while(start<end){ 
-        int mid=(start+end)/2;
-        if (arr[mid]>=Math.max(arr[mid-1],arr[mid+1])){
-           val=mid;
-           break;
-        }
-       else{ end=mid;}
-         
-     }
+    
         
     return val;
       
