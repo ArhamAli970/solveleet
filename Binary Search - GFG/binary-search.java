@@ -29,18 +29,23 @@ import java.util.*;
 // User function Template for Java
 
 class Solution {
-    int binarysearch(int arr[], int n, int k) {
-        int i=0,j=n-1;
-        while(i<=j){
-           
-          int mid=(i+j)/2;
+    int binarysearch(int arr[], int n, int k) { 
+        
+          int si=0, ei= arr.length-1;
           
-          if (arr[mid]==k){return mid;}
-            else if(arr[mid]>k){j=mid-1;}
-            else{i=mid+1;}
-            
-            
-        }
-        return -1;
+          while(si<=ei){ 
+           
+          int mid= (si+ei)/2 ;
+          
+         if(arr[mid]> k) {ei=mid-1;}
+         else if(arr[mid]==k){return mid;}
+         else{si= mid+1;}
+         
+         
+             
+          }
+          return -1;
+     
+   
     }
 }
