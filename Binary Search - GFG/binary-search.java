@@ -31,23 +31,21 @@ import java.util.*;
 class Solution {
     int binarysearch(int arr[], int n, int k) { 
         
-        int si=0 , ei= arr.length-1;
+        int si=0, ei=n-1;
         
-        while(si<=ei){ 
-        
-        int mid= (si+ei)/2;
-         
-         if(arr[mid]>k){ei=mid-1;}
-         
-         else if(arr[mid]<k){si=mid+1;}
-         
-         else{ return mid;}
+        while(si<=ei){
             
+            int mid= (si+ei)/2;
+             
+             //  11      5
+            if(arr[mid]> k){ei= mid-1;}
+                //      6     9
+            else if(arr[mid] <k){ si= mid+1;}
             
+            else{ return mid;}
         }
         
-        
-         return -1;
+ return -1;
      
    
     }
