@@ -57,13 +57,18 @@ class GFG{
 class Solution
 {
     int getMiddle(Node head)
-    {
-    Node slow= head;
-    Node fast=head;
-    while(fast!=null && fast.next!=null){ 
-    slow=slow.next;
-    fast=fast.next.next;
-    }
-    return slow.data;
+    { 
+Node slow= head;
+Node fast= head;
+
+while(fast!=null && fast.next!=null){ 
+    
+ slow= slow.next;   //+1 to pointer
+ fast= fast.next.next; //+2 to pointer
+ 
+    
+}
+  
+   return slow.data;
     }
 }
