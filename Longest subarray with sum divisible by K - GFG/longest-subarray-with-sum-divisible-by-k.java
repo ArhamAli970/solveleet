@@ -19,9 +19,9 @@ class Solution{
        
        
 
-// for(int i=1;i<n;i++){ 
-// a[i]=a[i-1]+a[i];
-// }
+for(int i=1;i<n;i++){ 
+a[i]=a[i-1]+a[i];
+}
 
 // System.out.println(arr[n-1]);
 
@@ -29,7 +29,7 @@ int max=0,sum=0;
 HashMap<Integer,Integer> mp= new HashMap<>();
      for(int i=0;i<n;i++){ 
          sum+=a[i];
-int mod=((sum % k) + k) % k;;
+int mod=((a[i] % k) + k) % k;
       if(mod==0){ 
         max=i+1;
       }
