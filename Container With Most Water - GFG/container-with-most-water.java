@@ -33,19 +33,27 @@ class GFG {
 
 class Solve{
     
-    long maxArea(int A[], int len){
-             int i=0;
-     int j=A.length-1; 
-     if(A.length==1){ return 0;}
-  int container=Integer.MIN_VALUE;
-     while(i<j){ 
-         int k=A[i]>=A[j]?A[j]:A[i];
-         container=container>k*(j-i)?container:k*(j-i);
-
-         if(A[i]<A[j]){i++;}
-         else{j--;}
-     }
-        return container;
+    long maxArea(int arr[], int n){
+        int i=0,j=n-1;
+        
+     
+        long max=0;
+        
+        while(i<j){ 
+         long ans=Math.min(arr[i],arr[j])*(j-i);
+         if(arr[i]>=arr[j]){
+             j--;
+         }
+         
+         else{ 
+             
+            i++; 
+         }
+         
+         max=Math.max(max,ans);
+            
+        }
+        return max;
         
     }
     
