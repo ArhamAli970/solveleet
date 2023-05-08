@@ -34,5 +34,5 @@ You only need to<strong> </strong>implement the given function<strong> maxArea</
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1&lt;=N&lt;=10<sup>5</sup><br>
-1&lt;=A[i]&lt;=100</span></p>
+1&lt;=A[i]&lt;=10<sup>5</sup></span></p>
 </div>
