@@ -43,25 +43,42 @@ class Solution {
     public int countSubArrayProductLessThanK(long a[], int n, long k)
     {
          
-         int i=0,j=0,subcount=0;
-         long p=1;
+         int subcount=0;
+        //  long p=1; 
          
-         while(j<n){ 
+         //brute
+         
+         for(int i=0;i<n;i++){ 
           
-          p*=a[j];
-          while(p>=k && i<j){ 
-              p/=a[i];
-              i++;
+              long p=1; 
+          for(int j=i;j<n;j++){ 
+           p*=a[j]; 
+        
+            if(p>=k){break;}  
+              subcount++;
           }
           
-          if(p<k){ 
-               subcount+=(j-i)+1;
-          }
+             
+         }
+         
+         
+        //  int i=0,j=0;
+        //  while(j<n){ 
           
-          j++;
+        //   p*=a[j];
+        //   while(p>=k && i<j){ 
+        //       p/=a[i];
+        //       i++;
+        //   }
+          
+        //   if(p<k){ 
+        //       subcount+=(j-i)+1;
+        //   }
+          
+        //   j++;
              
              
-         } 
+        //  } 
          
          return subcount;
          
