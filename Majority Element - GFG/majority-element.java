@@ -30,29 +30,39 @@ class Geeks
 //User function Template for Java
 
 class Solution
-{ 
-
+{
     static int majorityElement(int a[], int size)
     {
-                int len=a.length/2;
-HashMap <Integer,Integer> p= new HashMap<>();
-for (int idx=0;idx<a.length;idx++){ 
-  if(p.containsKey(a[idx])){  
-    p.put(a[idx],p.get(a[idx])+1);
-    }
-    else{ 
-      p.put(a[idx], 1);
-    }
-}
-int k=-1;
-
-for (Map.Entry<Integer,Integer> e:p.entrySet()){ 
-  if(e.getValue()>len){ 
-    k=e.getKey();
-    break;
-  }
-
-}
-    return k;  
+        int majority=a[0],count=1;
+        
+      
+      for(int i=1;i<a.length;i++){ 
+          
+       if(a[i]==majority){ 
+        count++;   
+       }
+       
+       else{ 
+           count--;
+        if(count==0){ 
+            majority=a[i];
+            count=1;
+        }
+       }
+       
+          
+      }
+      
+      count=0;
+      for(int i=0;i<a.length;i++){ 
+       
+       if(majority==a[i]){ 
+           count++;
+       }
+          
+      }
+      
+      return a.length/2<count?majority:-1;
+      
     }
 }
