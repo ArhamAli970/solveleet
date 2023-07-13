@@ -37,7 +37,7 @@ class GFG
        long f=l;
        
        
-         st=0;end=n-1;
+         st=0;end=(int)f;
         while(st<=end){ 
           int mid=st+(end-st)/2;
          if(arr[mid]>x){ 
