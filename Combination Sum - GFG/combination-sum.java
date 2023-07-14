@@ -63,8 +63,8 @@ class Solution
     
     static HashSet<ArrayList<Integer>> h= new HashSet<>();
     public static void call(ArrayList<Integer> mat,ArrayList<Integer> arr, ArrayList<ArrayList<Integer>> a,int sum,int j,int b){ 
-     if(sum>b){return;}
-     else if(sum==b && !h.contains(arr)){
+    //  if(sum>b){return;}
+     if(sum==b && !h.contains(arr)){
          a.add(new ArrayList<>(arr));
          h.add(arr);
          return;
@@ -77,7 +77,7 @@ class Solution
         if(sum+mat.get(i)>b){
             return;
         }
-        if(mat.get(i)< arr.get(arr.size()-1)){continue;}
+        // if(mat.get(i)< arr.get(arr.size()-1)){continue;}
         arr.add(mat.get(i));
         call(mat,arr,a,sum+mat.get(i),i,b);
         arr.remove(arr.size()-1);
