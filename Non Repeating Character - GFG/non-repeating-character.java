@@ -36,22 +36,19 @@ class Solution
     //Function to find the first non-repeating character in a string.
     static char nonrepeatingCharacter(String s)
     {
-     int [] ar=new int [26]; 
+     Queue<Character> q= new LinkedList<>();
+     int arr[]=new int[26];
      for(int i=0;i<s.length();i++){
-         
-         ++ar[s.charAt(i)-'a'];
-        
+         q.add(s.charAt(i));
+         ++arr[s.charAt(i)-'a'];
+         while(!q.isEmpty() && arr[q.peek()-'a']>1){ 
+          q.remove();   
+         }
      }
      
-     for(int i=0;i<s.length();i++){
-         
-         if(ar[s.charAt(i)-'a']==1){ 
-             return s.charAt(i);
-         }
-        
-     }
-     return '$';
+     if(q.isEmpty()){return '$';}
+     return q.remove();
+     
     }
 }
-
 
