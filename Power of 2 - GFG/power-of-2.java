@@ -34,23 +34,15 @@ class Driver_class
 
 class Solution{
     
-     public static boolean checkpow(long n){  
-        if(n==0){ return false;}
-        while(n>0){ 
-            if(n%2!=0 && n!=1) { 
-                return false;
-            }
-            n/=2;
-
-        }
-        return true;
-
-    }
-    
     // Function to check if given number n is a power of two.
-    public static boolean isPowerofTwo(long n){
+    public static boolean isPowerofTwo(long n){ 
+        if(n==0){return false;}
         
-    return checkpow(n);
+        if((n&(n-1))==0){ 
+         return true;   
+        }
+        
+        return false;
         
     }
     
