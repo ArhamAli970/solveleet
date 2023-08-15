@@ -48,7 +48,7 @@ class Solution {
              }
              else{ 
                  cnt1++;
-                 if(cnt1>=cnt0){ 
+                 if(cnt1>cnt0){ 
                   j++;i=j;
                   cnt1=0;cnt0=0;
                  }else{
