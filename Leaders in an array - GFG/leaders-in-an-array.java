@@ -7,6 +7,7 @@ class Array {
     
 	public static void main (String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter ot = new PrintWriter(System.out);
 		int t = Integer.parseInt(br.readLine().trim()); //Inputting the testcases
 		
 		while(t-->0){
@@ -29,14 +30,14 @@ class Array {
 		    //calling leaders() function
 		    res = obj.leaders(arr, n);
 		    
-		    //appending result to a String
+
 		    for(int i=0; i<res.size(); i++){
-		        str.append(res.get(i)+" ");
+		        ot.print(res.get(i)+" ");
 		    }
 		    
-		    //printing the String
-		    System.out.println(str);
+		    ot.println();
 		}
+		ot.close();
 		
 	}
 }
@@ -46,17 +47,36 @@ class Array {
 
 class Solution{
     //Function to find the leaders in the array.
-    static ArrayList<Integer> leaders(int arr[], int n){ 
-        ArrayList<Integer> p= new   ArrayList<Integer>();
-        int max=Integer.MIN_VALUE;
-        for(int i=n-1;i>=0;i--){  
-         
-         if(arr[i]>=max){ p.add(arr[i]);
-         max=arr[i];}
+    static ArrayList<Integer> leaders(int arr[], int n){
+        ArrayList<Integer> a= new ArrayList<>();
+        Stack<Integer> st= new Stack();
+        Stack<Integer> ele= new Stack();
+
+        
+        int i=n-1;
+        
+        while(i>=0){
+            
+            while(!st.isEmpty() && arr[i]>=arr[st.peek()]){ 
+                st.pop();
+                
+            }
+            
+            if(st.isEmpty()){ 
+             ele.push(arr[i]);   
+            }
+            
+            st.push(i);
+            i--;
             
         }
-        Collections.reverse(p);
-        return p;
+        
+        
+        while(!ele.isEmpty()){ 
+         a.add(ele.pop());   
+        }
+        
+        return a;
         
     }
 }
