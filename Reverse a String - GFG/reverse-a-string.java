@@ -31,11 +31,17 @@ class Reverse
     // str: input string
     public static String reverseWord(String str)
     {
-    // yaha sb acha hai kyuki hum change kr rhe haistring ko baar baar;
-     StringBuilder sb= new StringBuilder();
-for (int i=str.length()-1;i>=0;i--){ 
-    sb.append(str.charAt(i));
-}
-return sb.toString();
+       char arr[]= str.toCharArray();
+        
+        int i=0,j=str.length()-1;
+        
+        while(i<j){ 
+         char a= arr[i];
+         arr[i]=arr[j];
+         arr[j]=a;
+         i++;j--;
+        }
+       
+       return String.valueOf(arr);
     }
 }
