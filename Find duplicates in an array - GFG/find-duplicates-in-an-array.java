@@ -25,36 +25,24 @@ class GFG {
 class Solution {
     public static ArrayList<Integer> duplicates(int arr[], int n) {
         
-         ArrayList<Integer> a= new ArrayList<>();
-         
-         for(int i=0;i<n;i++){ 
+        ArrayList<Integer> a= new ArrayList<>();
+        HashMap<Integer,Integer> m= new HashMap<>();
+       
+       for(int i=0;i<n;i++){ 
+           m.put(arr[i],m.getOrDefault(arr[i],0)+1);
           
-          if(i==arr[i] || arr[i]==-1){continue;}
-          
-          while(!(i==arr[i] || arr[arr[i]]==-1 || arr[i]==arr[arr[i]] )){ 
-           int temp=arr[i];
-           arr[i]=arr[temp];
-           arr[temp]=temp;
-          }
-          
-          if( i!=arr[i] && arr[i]==arr[arr[i]]){arr[arr[i]]=-1;}
-          
-          
-             
-         }
-         
-         
-         for(int i=0;i<n;i++){ 
-          if(arr[i]==-1){a.add(i);}
-          
-          
-         }
-         
-         if(a.size()==0){a.add(-1);}
-         
-         
-         return a;
-        
-        
+       }
+       
+       for(Map.Entry<Integer,Integer> e: m.entrySet()){ 
+        if(e.getValue()>1){ 
+         a.add(e.getKey());   
+        }
+       }
+       
+       Collections.sort(a);
+       
+       if(a.size()==0){a.add(-1);}
+       
+       return a;
     }
 }
