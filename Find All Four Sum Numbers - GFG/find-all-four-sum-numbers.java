@@ -46,47 +46,40 @@ class GFG {
 
 class Solution {
     public ArrayList<ArrayList<Integer>> fourSum(int[] arr, int k) {
-    
-    int n=arr.length;
-    Arrays.sort(arr);
-    ArrayList<ArrayList<Integer>> a= new ArrayList<>();
-    HashSet<ArrayList<Integer>> h= new HashSet<>();
-    
-    
-    for(int i=0;i<n;i++){ 
-     
-     for(int j=i+1;j<n;j++){ 
-      
-      int l=j+1 , m=n-1;
-      
-      while(l<m){ 
-       
-          if(arr[i]+arr[j]+arr[l]+arr[m]<k){l++;}
-          else if(arr[i]+arr[j]+arr[l]+arr[m]>k){m--;}
-          else{
-              ArrayList<Integer> newarr= new ArrayList<>();
-              newarr.add(arr[i]);
-              newarr.add(arr[j]);
-              newarr.add(arr[l]);
-              newarr.add(arr[m]);
-              if(!h.contains(newarr)){
-                  a.add(newarr);
-              }
-              h.add(newarr);
-             l++;
-             m--;
-          }
-          
-      }
-         
-     }
         
+        ArrayList<ArrayList<Integer>> a= new ArrayList<>();
+        HashSet<Integer> h= new HashSet<>();
+        int n=arr.length;
+        Arrays.sort(arr);
+        
+        for(int i=0;i<n-3;i++){
+            if(!h.contains(arr[i])){
+                h.add(arr[i]);
+           for(int j=i+1;j<n-2;j++){ 
+               if(j-1!=i && arr[j]==arr[j-1]){continue;}
+               
+               int l=j+1,m=n-1;
+               
+               while(l<m){ 
+                int sum=arr[i]+arr[j]+arr[l]+arr[m];
+                if(sum>k){m--;}
+                else if(sum<k){l++;}
+                else{
+                    ArrayList<Integer> ar= new ArrayList<>();
+                    ar.add(arr[i]);ar.add(arr[j]);ar.add(arr[l]);ar.add(arr[m]);
+                    a.add(ar);
+                    int ele=arr[l++];
+                    while(l<m && arr[l]==ele){l++;}
+                }
+                   
+               }
+               
+               
+           }
+        }
     }
     
-    
-
-    
     return a;
-    
+        
     }
 }
