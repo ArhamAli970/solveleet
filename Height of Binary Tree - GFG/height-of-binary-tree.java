@@ -121,21 +121,20 @@ class Node
 
 class Solution {
     
-    
-public static int height_of_tree(Node root){ 
-//base case
-    if(root==null){
-        return 0;
+    public static int h(Node root){ 
+     
+     if(root==null){return 0;}
+     
+     return Math.max(h(root.left),h(root.right))+1;
+     
+     
+        
     }
-    //kaam
-    int lh= height_of_tree(root.left);
-    int rh=height_of_tree(root.right);
-    return Math.max(lh,rh)+1;
-
-}
+    
+    
     //Function to find the height of a binary tree.
-    int height(Node node) 
+    int height(Node root) 
     {
-    return height_of_tree(node);
+        return h(root);
     }
 }
