@@ -128,27 +128,26 @@ class Node
 } */
 
 class Tree
-{ 
-    public static int height(Node root){ 
-     
+{
+    static boolean bal;
+    public static int chkHeight(Node root){ 
      if(root==null){return 0;}
      
-     int left_h= 	height( root.left);
-     int right_h= 	height( root.right);
-     if(left_h==-1 || right_h==-1){return -1;}
+     int left=chkHeight(root.left);
+     int right=chkHeight(root.right);
      
-     if(left_h-right_h>1 || right_h-left_h>1){return -1;}
+     if(Math.abs(left-right)>1){bal=false;}
      
-     return  Math.max(left_h,right_h)+1;
+     return Math.max(left,right)+1;
      
     }
     
     //Function to check whether a binary tree is balanced or not.
     boolean isBalanced(Node root)
     {
- if(height( root)==-1){return false;}
- return true;
-	
+      bal=true;
+	   chkHeight(root) ;
+	   return bal;
     }
 }
 
